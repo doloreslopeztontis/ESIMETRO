@@ -6,6 +6,7 @@
 
 .Baner{
     height: 222px;
+    margin-bottom: 2%;
 }
 
 .Titulo{
@@ -31,12 +32,41 @@
 }
 
 .Boton{
-    background: white;
     color: #8A338A;
-    width: 200px;
+    width: 20%;
     height: 50px;
+    font-weight: 600;
+}
+
+.Boton:hover{
+    color:  #8A338A;
+    text-decoration: none;
+}
+
+.ContenedorPregunta{
+  width: 400px;
+  display: inline-block;
+  height: 70%;
+  background: white;    
+  border-radius: 6px;
+}
+
+.Pregunta{
+    background: white;
     text-align: center;
-    border-radius: 10px;
-    font-size: 20px;
-    padding-top: 10px;
+    color: #8A338A;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.Respuesta{
+    background: white;
+    display: inline-block;
+    border-radius: 50px;
+    border-color: #707070;
+    border-width: 1px;
+    color: #707070;
+    width: 100%;
+    height: 60px;
 }

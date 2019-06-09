@@ -21,8 +21,12 @@
     <div>
         <p class="Texto">Descripción de la aplicación, como funciona para que sirve cual es el objetivo...Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu.</p>
     </div>
-    <div class="">
-        <p class="Boton" id="botonComenzar">COMENZAR</p>
+    <div class="ContentenedorBoton">
+        <a class="Boton" href="ElegirCiclo.php">
+            <button type="button" class="btn btn-light Boton">
+                COMENZAR
+            </button>   
+        </a> 
     </div>
 
 </body>
