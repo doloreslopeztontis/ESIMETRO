@@ -17,8 +17,8 @@
     </div>
     <div class="ContenedorPregunta">
         <p class="Pregunta">En que ciclo estas?</p>
-        <button type="button" class="btn btn-outline-secondary Respuesta">Ciclo Basico</button>
-        <button type="button" class="btn btn-outline-secondary Respuesta">Ciclo Superior</button>
+        <button type="button" class="btn btn-outline-secondary Respuesta"><!--<?php echo $VariableConCategoria;?>-->Ciclo Superior</button>
+        <button type="button" class="btn btn-outline-secondary Respuesta"><!--<?php echo $VariableConCategoria;?>-->Ciclo Basico</button>
     </div>
 </body>
 </html>

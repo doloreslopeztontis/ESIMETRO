@@ -1,5 +1,4 @@
 *{
-    background: #8A338A;
     margin: 0;
     padding: 0;
 }
@@ -61,7 +60,7 @@
 }
 
 .Respuesta{
-    background: white;
+    background: red;
     display: inline-block;
     border-radius: 50px;
     border-color: #707070;
@@ -69,4 +68,8 @@
     color: #707070;
     width: 100%;
     height: 60px;
+}
+
+.Respuesta:hover{
+    background: #d64949;
 }
