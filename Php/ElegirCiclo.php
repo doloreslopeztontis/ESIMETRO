@@ -8,17 +8,31 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../Css/Estilos.css">
+    <link rel="stylesheet" type="text/css" href="../Css/estilosGenerales.css">
+
     <title>Elegir Ciclo</title>
 </head>
 <body>
-    <div class="">
-        <img src="../Imagenes/banerEsi.png" alt="Baner Esi" class="col-md-12 Baner">
+    <div class="container-fluid ContenedorBaner">
+       <div class="row">
+            <img src="../Imagenes/banerEsi.png" alt="Baner Esi" class="col-md-12 Baner">
+       </div>
     </div>
-    <div class="ContenedorPregunta">
-        <p class="Pregunta">En que ciclo estas?</p>
-        <button type="button" class="btn btn-outline-secondary Respuesta"><!--<?php echo $VariableConCategoria;?>-->Ciclo Superior</button>
-        <button type="button" class="btn btn-outline-secondary Respuesta"><!--<?php echo $VariableConCategoria;?>-->Ciclo Basico</button>
-    </div>
+
+   <div class="container-fluid">
+        <div class="ContenedorPregunta">
+            <div class="row col-md-12 justify-content-center FondoBlanco">
+                <p class="Pregunta center">En que ciclo estas?</p>
+            </div>
+            <div class="row col-md-10 FondoBlanco">
+            <!-- hago un while mientras siga habiendo mas categorias(nose en que forma me las va a mandar iris)
+                < ?php while ()?> {
+                    <button type="button" class="btn btn-outline-secondary Respuesta">< ?php echo $VariableConCategoria;?></button>
+                } -->
+                <button type="button" class="btn btn-outline-secondary Respuesta">CICLO SUPERIOR</button>
+                <button type="button" class="btn btn-outline-secondary Respuesta">CICLO BASICO</button>
+            </div>
+        </div>
+   </div>
 </body>
 </html>
