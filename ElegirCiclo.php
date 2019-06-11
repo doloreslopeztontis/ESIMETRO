@@ -7,22 +7,22 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="../Css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../Css/estilosGenerales.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
 
     <title>Elegir Ciclo</title>
 </head>
 <body>
     <div class="container-fluid ContenedorBaner">
        <div class="row">
-            <img src="../Imagenes/banerEsi.png" alt="Baner Esi" class="col-md-12 Baner">
+            <a href="https://campus.ort.edu.ar/educacionsexualintegral" target="_blank"><img src="img/banerEsi.png" alt="Baner Esi" class="col-md-12 Baner"></a>
        </div>
     </div>
 
    <div class="container-fluid">
         <div class="ContenedorPregunta">
             <div class="row col-md-12 justify-content-center FondoBlanco">
-                <p class="Pregunta center">En que ciclo estas?</p>
+                <p class="Pregunta center">¿En que ciclo est&aacute;s?</p>
             </div>
             <div class="row col-md-12 FondoBlanco">
                 <button type="button" class="btn btn-outline-secondary Respuesta">CICLO SUPERIOR</button>
