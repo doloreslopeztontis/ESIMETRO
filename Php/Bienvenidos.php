@@ -29,8 +29,8 @@
         </div>
     <div class="container-fluid">
         <div class="row col-md-12 justify-content-center">
-            <a class="Boton " href="ElegirCiclo.php">
-                <button type="button" class="btn btn-light Boton ">
+            <a class="Boton" href="ElegirCiclo.php">
+                <button type="button" class="btn btn-light Boton">
                     COMENZAR
                 </button>   
             </a> 

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     background: #8A338A;
+    overflow: hidden;
 }
 .ContenedorBaner{
     padding-right: 0;
@@ -18,6 +19,7 @@
     color: white;
     font-weight: bold;
     letter-spacing: 8px;
+    border-radius: 15px;
 }
 
 .Texto{
@@ -31,7 +33,7 @@
 
 .Boton{
     color: #8A338A;
-    height: 50px;
+    height: 65px;
     width: 300px;
     font-weight: 600;
     border-radius: 18px;
@@ -46,14 +48,16 @@
 
 .ContenedorPregunta{
   width: 80%;
-  height: 20em;   
   border-radius: 15px;
   background-color: white;
   padding: 0;
+  margin:auto;
 }
 
 .FondoBlanco{
     background-color: white;
+    margin-left: 0;
+    border-radius: 15px;
 }
 
 .Pregunta{

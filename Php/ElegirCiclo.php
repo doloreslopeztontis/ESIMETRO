@@ -24,11 +24,7 @@
             <div class="row col-md-12 justify-content-center FondoBlanco">
                 <p class="Pregunta center">En que ciclo estas?</p>
             </div>
-            <div class="row col-md-10 FondoBlanco">
-            <!-- hago un while mientras siga habiendo mas categorias(nose en que forma me las va a mandar iris)
-                < ?php while ()?> {
-                    <button type="button" class="btn btn-outline-secondary Respuesta">< ?php echo $VariableConCategoria;?></button>
-                } -->
+            <div class="row col-md-12 FondoBlanco">
                 <button type="button" class="btn btn-outline-secondary Respuesta">CICLO SUPERIOR</button>
                 <button type="button" class="btn btn-outline-secondary Respuesta">CICLO BASICO</button>
             </div>
@@ -36,3 +32,8 @@
    </div>
 </body>
 </html>
+
+    <!-- hago un while mientras siga habiendo mas categorias(nose en que forma me las va a mandar iris)
+                < ?php while ()?> {
+                    <button type="button" class="btn btn-outline-secondary Respuesta">< ?php echo $VariableConCategoria;?></button>
+                } -->
