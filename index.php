@@ -13,11 +13,8 @@
     <title>Bienvenido/a</title>
 </head>
 <body>
-    <div class="container-fluid ContenedorBaner">
-       <div class="row">
-            <img src="img/banerEsi.png" alt="Baner Esi" class="col-md-12 Baner">
-       </div>
-    </div>
+    <?php include("Baner.php")?>
+    
     <div class="container-fluid">
         <div class="row col-md-12 justify-content-center">
             <h2 class="Titulo">BIENVENIDO/A</h2>
