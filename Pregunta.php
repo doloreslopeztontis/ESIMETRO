@@ -15,11 +15,8 @@
 <body>
     <?php 
     include("Baner.php");
-    $Respuestas = array("Educacion Sexual Integral","Encantado Sin Imagenes","Encantado Sin Imagenes","Encantado Sin Imagenes", "0"));
-
-    $Preguntas = array("Que significa las siglas ESI?", "Cuando se creo la ley de la ESI?");
     
-    var $Contador=0;
+    $Contador=0;
 
     ?>
     <div class="container-fluid">
@@ -28,7 +25,7 @@
                 <p class="Pregunta center"><?php echo $Preguntas[$Contador]?></p>
             </div>
             <div class="row col-md-12 FondoBlanco">
-            <?php for(int i=0; i<4;i++): ?>
+            <?php for($i = 0; $i<4; $i++): ?>
                 <button type="button" class="btn btn-outline-secondary Respuesta"><?php $Respuestas[$Contador][i].pregunta ?></button>
             <?php endfor?>
             </div>

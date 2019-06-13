@@ -13,17 +13,21 @@
     <title>Elegir Ciclo</title>
 </head>
 <body>
-    <?php include("Baner.php")?>
+    <?php include("Baner.php");
+    $Array = array("CICLO SUPERIOR","CICLO BASICO","PADRE");
+    ?>
 
    <div class="container-fluid">
         <div class="ContenedorPregunta">
             <div class="row col-md-12 justify-content-center FondoBlanco">
                 <p class="Pregunta center">¿En que ciclo est&aacute;s?</p>
             </div>
-            <div class="row col-md-12 FondoBlanco">
-                <button type="button" class="btn btn-outline-secondary Respuesta">CICLO SUPERIOR</button>
-                <button type="button" class="btn btn-outline-secondary Respuesta">CICLO BASICO</button>
-            </div>
+            <?php foreach($Array as $NombreCategoria): ?>
+                <div class="row col-md-12 FondoBlanco">
+                    <button type="button" class="btn btn-outline-secondary Respuesta"><?php echo $NombreCategoria;?></button>
+                </div>
+            <?php endforeach; ?>
+               
         </div>
    </div>
 </body>
