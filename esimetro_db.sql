@@ -92,7 +92,7 @@ CREATE TABLE `preguntas` (
 
 LOCK TABLES `preguntas` WRITE;
 /*!40000 ALTER TABLE `preguntas` DISABLE KEYS */;
-INSERT INTO `preguntas` VALUES (1,2,'¿A una mujer trans hay que tratarla como mujer?','100% de las mujeres trans son mujeres'),(3,1,'sos feminista?','te quiero muchio'),(4,1,'sos?','te quiero muchio'),(5,1,'?','te quiero muchio');
+INSERT INTO `preguntas` VALUES (1,6,'¿A una mujer trans hay que tratarla como mujer?','100% de las mujeres trans son mujeres'),(3,7,'sos feminista?','te quiero muchio'),(4,7,'sos?','te quiero muchio'),(5,7,'?','te quiero muchio');
 /*!40000 ALTER TABLE `preguntas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,17 +226,42 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listar_Preguntas`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `listar_Preguntas`(IN idcategoria INT)
 BEGIN
-	SELECT preguntas.idPregunta, categorias.categoria, preguntas.pregunta, preguntas.texto_final, respuestas.opcion, respuestas.respuesta, respuestas.ponderacion FROM preguntas
-	INNER JOIN categorias ON categorias.idCategoria = preguntas.idCategoria
-    LEFT JOIN respuestas ON respuestas.idPregunta = preguntas.idPregunta;
+	IF EXISTS (SELECT * FROM preguntas WHERE idCategoria = idcategoria) THEN
+    
+		SELECT preguntas.idPregunta, categorias.categoria, preguntas.pregunta, preguntas.texto_final, respuestas.opcion, respuestas.respuesta, respuestas.ponderacion FROM preguntas
+		INNER JOIN categorias ON categorias.idCategoria = preguntas.idCategoria
+		LEFT JOIN respuestas ON respuestas.idPregunta = preguntas.idPregunta
+		WHERE preguntas.idCategoria = idcategoria;
+	END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `traer_Categoria` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `traer_Categoria`(IN idcategorianow INT, OUT categorianow VARCHAR(100))
+BEGIN
+	IF EXISTS (SELECT * FROM categorias WHERE idCategoria = idcategorianow) THEN
+		SELECT categoria FROM categorias WHERE idCategoria = idcategorianow INTO categorianow;
+    END IF;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -295,4 +320,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-12  9:13:43
+-- Dump completed on 2019-06-14 10:13:00
