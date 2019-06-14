@@ -13,7 +13,8 @@
     <title>Elegir Ciclo</title>
 </head>
 <body>
-    <?php include("Baner.php");
+    <?php
+    include("Baner.php");
     $Array = array("CICLO SUPERIOR","CICLO BASICO","PADRE");
     ?>
 
