@@ -33,8 +33,3 @@
    </div>
 </body>
 </html>
-
-    <!-- hago un while mientras siga habiendo mas categorias(nose en que forma me las va a mandar iris)
-                < ?php while ()?> {
-                    <button type="button" class="btn btn-outline-secondary Respuesta">< ?php echo $VariableConCategoria;?></button>
-                } -->

@@ -4,12 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="main.js"></script>
-    <title>Pantalla final</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
+    <title>Sabias que...</title>
 </head>
 <body>
-    <?php include("Baner.php"); ?>
+    <?php include("Baner.php");
+    session_start(); 
+    ?>
 
     <div class="container-fluid">
         <div class="ContenedorPregunta">
@@ -18,11 +23,18 @@
             </div>
             <div class="row col-md-12 FondoBlanco">
                 <div class="row col-md-12 justify-content-center FondoBlanco">
-                    <p class="TestoDato center"><?php $Respuestas[$Contador].pregunta ?></p>
+                    <p class="TestoDato center"><?php $Respuestas[ $_SESSION['Contador']].TextoFinal ?></p>
                 </div>
+            </div>
+            <div class="row col-md-12 FondoBlanco">
+                <button type="button" class="btn btn-outline-secondary Continuar">CONTINUAR</button>
             </div>
         </div>
     </div>
+
+    <?php 
+        $_SESSION['Contador'] = $_SESSION['Contador'] + 1;
+    ?>
 
 </body>
 </html>

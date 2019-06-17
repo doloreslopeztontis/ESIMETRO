@@ -85,3 +85,19 @@
 .Respuesta:hover{
     background: #bbbbbb;
 }
+
+.Res{
+    height: 40px;
+}
+
+.Continuar{
+    height: 40px;
+    margin-bottom: 2%;
+    border-radius: 50px;
+    background: #8A338A;
+    color: white;
+}
+
+.Continuar:hover{
+    background: rgb(85, 31, 85);
+}
