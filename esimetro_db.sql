@@ -235,11 +235,28 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `listar_Preguntas`(IN idcategoria INT)
 BEGIN
 	IF EXISTS (SELECT * FROM preguntas WHERE idCategoria = idcategoria) THEN
-    
-		SELECT preguntas.idPregunta, categorias.categoria, preguntas.pregunta, preguntas.texto_final, respuestas.opcion, respuestas.respuesta, respuestas.ponderacion FROM preguntas
-		INNER JOIN categorias ON categorias.idCategoria = preguntas.idCategoria
-		LEFT JOIN respuestas ON respuestas.idPregunta = preguntas.idPregunta
-		WHERE preguntas.idCategoria = idcategoria;
+		SELECT * FROM preguntas WHERE preguntas.idCategoria = idcategoria;
+	END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `listar_Respuestas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `listar_Respuestas`(IN idpregunta INT)
+BEGIN
+	IF EXISTS (SELECT * FROM respuestas WHERE idPregunta = idpregunta) THEN
+		SELECT * FROM respuestas WHERE idPregunta = idpregunta;
 	END IF;
 END ;;
 DELIMITER ;
@@ -320,4 +337,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-14 10:13:00
+-- Dump completed on 2019-06-19  8:35:15
