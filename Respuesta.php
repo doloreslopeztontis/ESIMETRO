@@ -14,6 +14,8 @@
 <body>
     <?php include("Baner.php");
     session_start(); 
+
+    //$TextosFinales=array($respuesta1, $respuesta2, $respuesta3, $respuesta4);
     ?>
 
     <div class="container-fluid">

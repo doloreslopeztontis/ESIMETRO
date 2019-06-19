@@ -29,6 +29,46 @@
         public $ponderacion;
     }
 
+    class Preguntas{
+        public $Categoria;
+        public $Pregunta;
+        public $TextoFinal; 
+    };
+
+    public static function ObtenerArrayPreguntas(){
+        array[Preguntas] = new array ArrayADevolver; 
+    
+        //ME CONECTO CON LA BASE DE DATOS
+        $MiBase = new PDO("mysql:host=127.0.0.1;dbname=esimetro_db", "root",""); //cambiar la contra y el usuario por el que pase dolo
+        //hacer catch
+
+        //LLAMO AL STORE
+        $result = mysqli_query($MiBase, "CALL StoreProcName(PARAMETROS)"); //cambiar StoreProcName por el nombre del store
+
+        //LE DEFINO LA QUERY A MI OBJETO DE CONEXION.
+        $Resultado = $MiBase->prepare($result);
+        $Resultado->setFetchMode(PDO::FETCH_ASSOC);
+    
+        //CREO UN ARRAY CON PARAMETROS EN CASO DE QUE LA CONSULTA LOS REQUIERA
+       
+        $Resultado->execute();
+        $Contador = 0;    
+        if ($Resultado->rowCount() > 0) {
+            while($row = $Resultado->fetch()) { //en row va a estar un array con los registros
+                $Objeto->Categoria = $row[1];
+                $Objeto->Pregunta = $row[2];
+                $Objeto->TextoFinal = $row[3];
+
+                $ArrayADevolver[$Contador] =  $Objeto;
+                $Contador++;
+            }
+        }
+        
+        $MiBase = null;
+    
+        return $ArrayADevolver;    
+    }
+
     $respuesta1 = new Respuesta();
     $respuesta1->respuesta = 'Si, claro';
     $respuesta1->ponderacion = 40;
@@ -67,6 +107,9 @@
         array($respuesta1, $respuesta2, $respuesta3, $respuesta4),
         array($respuesta5, $respuesta6, $respuesta7, $respuesta8)
     );
+
+    //metodo traer array preguntas
+    //while qu
 
     $Preguntas = array("hotel?","Trivago");
     ?>
