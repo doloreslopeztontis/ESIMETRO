@@ -2,12 +2,14 @@
     margin: 0;
     padding: 0;
     background: #8A338A;
-    overflow: hidden;
+    overflow-x: hidden;   
 }
+
 .ContenedorBaner{
     padding-right: 0;
     padding-left: 0;
 }
+
 .Baner{
     height: 180px;
     margin-bottom: 2%;
@@ -52,6 +54,7 @@
   background-color: white;
   padding: 0;
   margin:auto;
+  margin-bottom: 20px;
 }
 
 .FondoBlanco{

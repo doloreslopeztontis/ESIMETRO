@@ -9,25 +9,30 @@
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="mainajax.js"></script>
 
     <title>Pregunta</title>
 </head>
 <body>
-    <?php 
+    <?php
+    
+    //TODAVIA NO ME PASARON QUE CATEGORIA ES SELECCIONADA
+
     include("Baner.php");
+
     session_start();
     if (!isset($_SESSION['Contador'])){ //si la variable Contador no esta seteada que la incialice en 0
         $_SESSION['Contador'] = 0;
         
     }
 
-    class Respuesta
-    {
+    class Respuesta{
         //El idPregunta no lo agrego porque es la posición del primer array
         //La opción tampoco la agrego porque es la posición del segundo array
         public $respuesta;
         public $ponderacion;
-    }
+    };
 
     class Preguntas{
         public $Categoria;
@@ -35,7 +40,14 @@
         public $TextoFinal; 
     };
 
-    public static function ObtenerArrayPreguntas(){
+    class Categoria
+    {
+        public $idCategoria;
+        public $NombreCategoria;
+    }
+    
+
+    static function ObtenerArrayPreguntas(){
         array[Preguntas] = new array ArrayADevolver; 
     
         //ME CONECTO CON LA BASE DE DATOS
@@ -43,14 +55,14 @@
         //hacer catch
 
         //LLAMO AL STORE
-        $result = mysqli_query($MiBase, "CALL StoreProcName(PARAMETROS)"); //cambiar StoreProcName por el nombre del store
-
+        $result = mysqli_query($MiBase, "CALL listar_Preguntas($idCategoria)"); 
         //LE DEFINO LA QUERY A MI OBJETO DE CONEXION.
         $Resultado = $MiBase->prepare($result);
         $Resultado->setFetchMode(PDO::FETCH_ASSOC);
     
         //CREO UN ARRAY CON PARAMETROS EN CASO DE QUE LA CONSULTA LOS REQUIERA
        
+
         $Resultado->execute();
         $Contador = 0;    
         if ($Resultado->rowCount() > 0) {
@@ -68,6 +80,8 @@
     
         return $ArrayADevolver;    
     }
+
+    $ArrayPreguntas = ObtenerArrayPreguntas();
 
     $respuesta1 = new Respuesta();
     $respuesta1->respuesta = 'Si, claro';
@@ -108,15 +122,12 @@
         array($respuesta5, $respuesta6, $respuesta7, $respuesta8)
     );
 
-    //metodo traer array preguntas
-    //while qu
-
-    $Preguntas = array("hotel?","Trivago");
+    /*$Preguntas = array("hotel?","Trivago");*/
     ?>
     <div class="container-fluid">
         <div class="ContenedorPregunta">
             <div class="row col-md-12 justify-content-center FondoBlanco">
-                <p class="Pregunta center"><?php echo $Preguntas[$_SESSION['Contador']]?></p>
+                <p class="Pregunta center"><?php echo $ArrayPreguntas[$_SESSION['Contador']]?></p>
             </div>
             <div class="row col-md-12 FondoBlanco">
             <?php $index = 0; 
@@ -129,8 +140,5 @@
         </div>
     </div>
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="mainajax.js"></script>
 </body>
 </html>

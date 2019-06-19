@@ -16,7 +16,7 @@
 
     <?php
     include("Baner.php");
-    $Array = array("CICLO SUPERIOR","CICLO BASICO","PADRE");
+    $Array = array("CICLO SUPERIOR","CICLO BASICO","PADRE","HOLA","HOLA","HOLA");
     //este array lo tiene que traer de la bd dinamicamente y estar lleno de objetos Categoria !!! 
     //el id de la categoria clickeada tiene que ser pasada como value 
     ?>
