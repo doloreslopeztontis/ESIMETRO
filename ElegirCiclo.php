@@ -13,20 +13,24 @@
     <title>Elegir Ciclo</title>
 </head>
 <body>
+
     <?php
     include("Baner.php");
     $Array = array("CICLO SUPERIOR","CICLO BASICO","PADRE");
+    //este array lo tiene que traer de la bd dinamicamente y estar lleno de objetos Categoria !!! 
+    //el id de la categoria clickeada tiene que ser pasada como value 
     ?>
-
    <div class="container-fluid">
         <div class="ContenedorPregunta">
             <div class="row col-md-12 justify-content-center FondoBlanco">
                 <p class="Pregunta center">¿En que ciclo est&aacute;s?</p>
             </div>
-            <?php foreach($Array as $NombreCategoria): ?>
+            <?php foreach($Array as $categoria): ?>
                 <div class="row col-md-12 FondoBlanco">
-                    <button id="ciclos-link" type="button" class="btn btn-outline-secondary Respuesta"><?php echo $NombreCategoria;?></button>
+                    <button id="ciclos-link" type="button" class="btn btn-outline-secondary Respuesta"><?php echo $categoria;?></button>
                 </div>
+                <!--agregar value="$categoria->id" al boton-->
+                <!--reemplazar echo $categoria por echo $categoria->Nombre-->
             <?php endforeach; ?>
                
         </div>
