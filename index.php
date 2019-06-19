@@ -26,13 +26,14 @@
         </div>
     <div class="container-fluid">
         <div class="row col-md-12 justify-content-center">
-            <a class="Boton" href="ElegirCiclo.php">
-                <button type="button" class="btn btn-light Boton">
-                    COMENZAR
-                </button>   
-            </a> 
+            <button id="index-link" type="button" class="btn btn-light Boton">
+                COMENZAR
+            </button>   
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="mainajax.js"></script>
 
 </body>
 </html>

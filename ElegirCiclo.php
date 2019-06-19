@@ -25,11 +25,15 @@
             </div>
             <?php foreach($Array as $NombreCategoria): ?>
                 <div class="row col-md-12 FondoBlanco">
-                    <button type="button" class="btn btn-outline-secondary Respuesta"><?php echo $NombreCategoria;?></button>
+                    <button id="ciclos-link" type="button" class="btn btn-outline-secondary Respuesta"><?php echo $NombreCategoria;?></button>
                 </div>
             <?php endforeach; ?>
                
         </div>
    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="mainajax.js"></script>
 </body>
+
 </html>
