@@ -11,9 +11,15 @@ $(document).ready(function() {
     //click en una categoria
     $("#ciclos-link").click(function () {
         console.log( "click!" );
+        ObtenerUltimoUsuario();
         $("body").load("Pregunta.php");
         }
     );
+
+
+    function insertarEstadisticas(){
+        //llamar al stored 
+    } 
 });
 
 //$( "#main-container" ).load( "Pregunta.php #pregunta-container" );

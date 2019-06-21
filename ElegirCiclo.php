@@ -18,7 +18,9 @@
     include("Baner.php");
     $Array = array("CICLO SUPERIOR","CICLO BASICO","PADRE","HOLA","HOLA","HOLA");
     //este array lo tiene que traer de la bd dinamicamente y estar lleno de objetos Categoria !!! 
-    //el id de la categoria clickeada tiene que ser pasada como value 
+    
+    //$_session["idUsuario"] = traer_Ultimaestadistica + 1;
+
     ?>
    <div class="container-fluid">
         <div class="ContenedorPregunta">
@@ -29,8 +31,6 @@
                 <div class="row col-md-12 FondoBlanco">
                     <button id="ciclos-link" type="button" class="btn btn-outline-secondary Respuesta"><?php echo $categoria;?></button>
                 </div>
-                <!--agregar value="$categoria->id" al boton-->
-                <!--reemplazar echo $categoria por echo $categoria->Nombre-->
             <?php endforeach; ?>
                
         </div>

@@ -29,7 +29,7 @@
 
     class Respuesta{
         //El idPregunta no lo agrego porque es la posición del primer array
-        //La opción tampoco la agrego porque es la posición del segundo array
+        public $opcion;
         public $respuesta;
         public $ponderacion;
     };
@@ -44,7 +44,7 @@
     {
         public $idCategoria;
         public $NombreCategoria;
-    }
+    };
     
 
     static function ObtenerArrayPreguntas(){
@@ -133,7 +133,7 @@
             <div class="row col-md-12 FondoBlanco">
             <?php $index = 0; 
             foreach($Respuestas as $respuesta){ ?> 
-                    <p class="btn btn-outline-secondary Respuesta Res"><?php echo $Respuestas[$_SESSION['Contador']][$index]->respuesta; ?></p>
+                    <button id="respuesta-link"></button><p class="btn btn-outline-secondary Respuesta Res"><?php echo $Respuestas[$_SESSION['Contador']][$index]->respuesta; ?></p>
                     <?php
                     $index++;
                     } ?>
