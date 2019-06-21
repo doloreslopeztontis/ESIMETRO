@@ -104,3 +104,14 @@
 .Continuar:hover{
     background: rgb(85, 31, 85);
 }
+
+.TextoFinal{
+    font-size: 20px;
+    color: #707070;
+    background: white;
+}
+
+.ImgFinal{
+    height: 250px;
+    margin-bottom: 30px;
+}

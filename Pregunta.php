@@ -82,7 +82,8 @@
     }
 
     $ArrayPreguntas = ObtenerArrayPreguntas();
-
+    
+    //HARCODEO EL ARRAY
     $respuesta1 = new Respuesta();
     $respuesta1->respuesta = 'Si, claro';
     $respuesta1->ponderacion = 40;

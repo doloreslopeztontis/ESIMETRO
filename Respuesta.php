@@ -21,11 +21,11 @@
     <div class="container-fluid">
         <div class="ContenedorPregunta">
             <div class="row col-md-12 justify-content-center FondoBlanco">
-                <p class="Pregunta center">Sabias que...</p>
+                <p class="Pregunta center">SABIAS QUE...</p>
             </div>
             <div class="row col-md-12 FondoBlanco">
                 <div class="row col-md-12 justify-content-center FondoBlanco">
-                    <p class="TestoDato center"><?php $Respuestas[ $_SESSION['Contador']].TextoFinal ?></p>
+                    <p class="TextoDato center"><?php $Respuestas[ $_SESSION['Contador']].TextoFinal ?></p>
                 </div>
             </div>
             <div class="row col-md-12 FondoBlanco">
