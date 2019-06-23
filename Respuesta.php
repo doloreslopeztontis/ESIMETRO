@@ -12,16 +12,7 @@
     <title>Sabias que...</title>
 </head>
 <body>
-    <?php include("Baner.php");
-    session_start(); 
-    $idUsuario = $_SESSION["idUsuario"];
-    $idPregunta = $_SESSION["idPregunta"];
-    $idRespuesta = $_SESSION["idRespuesta"];
-    //$TextosFinales=array($respuesta1, $respuesta2, $respuesta3, $respuesta4);
-    function insertarEstadistica($conexion){
-        $sql = mysqli_query($conexion, "CALL listar_Categorias ($idUsuario, $idPregunta, $idRespuesta)") or die("Query fail: " . mysqli_error($conexion));
-    }
-    ?>
+    <?php include("Baner.php");?>
 
     <div class="container-fluid">
         <div class="ContenedorPregunta">
