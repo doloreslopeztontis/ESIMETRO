@@ -16,7 +16,7 @@
 
     <?php
     include("Baner.php");
-    $Array = array("CICLO SUPERIOR","CICLO BASICO","PADRE","HOLA","HOLA","HOLA");
+    $Array = array("CICLO SUPERIOR","CICLO BASICO");
     //este array lo tiene que traer de la bd dinamicamente y estar lleno de objetos Categoria !!! 
     
     //$_session["idUsuario"] = traer_Ultimaestadistica + 1;
