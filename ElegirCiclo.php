@@ -16,10 +16,41 @@
 
     <?php
     include("Baner.php");
-    $Array = array("CICLO SUPERIOR","CICLO BASICO");
+    session_start();
+    //$Array = array("CICLO SUPERIOR","CICLO BASICO","PADRE","HOLA","HOLA","HOLA");
     //este array lo tiene que traer de la bd dinamicamente y estar lleno de objetos Categoria !!! 
     
-    //$_session["idUsuario"] = traer_Ultimaestadistica + 1;
+	$servidor = "localhost";
+    $nombreusuario = "root";
+    $password = "";
+    $conexion = new mysqli($servidor,$nombreusuario,$password);
+    $_SESSION["idUsuario"];
+    //esta es la linea que agrega uno al idUsuario pero no se donde es que se hace click para elegir una categoria
+    //$_SESSION["idUsuario"] = $ultimaestadistica + 1;
+
+    verifconexion($conexion);
+    traerUltimaEstadistica($conexion);
+    traerCategorias($conexion);    
+
+    function verifconexion($conexion){
+        if ($conexion -> connect_error ){
+            die("conexion fallida: ". $conexion -> connect_error);
+        }   
+    }
+
+	function obtenerCategorias($conexion){
+		//esta linea obtiene las categorias y las guarda en $categoriasResultado
+		$sql = mysqli_query($conexion, "CALL listar_Categorias") or die("Query fail: " . mysqli_error($conexion));
+		$categoriasResultado = $conexion -> query ($sql);
+        //acá se esta guardando en una variable lo que trajo la query ($categoriasResultado). hay diferentes tipos de arrays, pero yo asumi que era uno asociativo
+		$categorias = $categoriasResultado -> fetch_array(MYSQLI_ASSOC);	
+    }	
+    
+    function traerUltimaEstadistica($conexion){
+        //no estoy segura que el stored procedure se llame asi, pero no lo encontre en la bdd
+        $sql = mysqli_query($conexion, "CALL traerUltimaEstadistica") or die ("Query fail: " . mysqli_error($conexion));
+        $ultimaestadistica = $conexion -> query($sql);
+    }
 
     ?>
    <div class="container-fluid">
@@ -27,7 +58,7 @@
             <div class="row col-md-12 justify-content-center FondoBlanco">
                 <p class="Pregunta center">¿En que ciclo est&aacute;s?</p>
             </div>
-            <?php foreach($Array as $categoria): ?>
+            <?php foreach($categorias as $categoria): ?>
                 <div class="row col-md-12 FondoBlanco">
                     <button id="ciclos-link" type="button" class="btn btn-outline-secondary Respuesta"><?php echo $categoria;?></button>
                 </div>

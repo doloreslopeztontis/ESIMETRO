@@ -46,23 +46,19 @@
         public $NombreCategoria;
     };
     
+    //la linea de abajo la comente porque no entiendo para que servia
+    //array[Preguntas] = new array ArrayADevolver; 
+        $servidor = "localhost";
+        $nombreusuario = "root";
+        $password = "";
+        $conexion = new mysqli($servidor,$nombreusuario,$password);
 
     static function ObtenerArrayPreguntas(){
-        array[Preguntas] = new array ArrayADevolver; 
+        $sql = mysqli_query($conexion, "CALL listar_Preguntas ($idCategoria)") or die("Query fail: " . mysqli_error($conexion));
+        //yo en este caso usaria la palabra query en vez de prepare, pero no entiendo la diferencia
+        $Resultado = $conexion->prepare($sql);
+        $Resultado->fetch_array(MYSQLI_ASSOC);
     
-        //ME CONECTO CON LA BASE DE DATOS
-        $MiBase = new PDO("mysql:host=127.0.0.1;dbname=esimetro_db", "root",""); //cambiar la contra y el usuario por el que pase dolo
-        //hacer catch
-
-        //LLAMO AL STORE
-        $result = mysqli_query($MiBase, "CALL listar_Preguntas($idCategoria)"); 
-        //LE DEFINO LA QUERY A MI OBJETO DE CONEXION.
-        $Resultado = $MiBase->prepare($result);
-        $Resultado->setFetchMode(PDO::FETCH_ASSOC);
-    
-        //CREO UN ARRAY CON PARAMETROS EN CASO DE QUE LA CONSULTA LOS REQUIERA
-       
-
         $Resultado->execute();
         $Contador = 0;    
         if ($Resultado->rowCount() > 0) {
@@ -76,15 +72,16 @@
             }
         }
         
-        $MiBase = null;
+        $conexion = null;
     
         return $ArrayADevolver;    
     }
 
     $ArrayPreguntas = ObtenerArrayPreguntas();
+    $Respuestas = obtenerArrayRespuestas();
     
     //HARCODEO EL ARRAY
-    $respuesta1 = new Respuesta();
+    /*$respuesta1 = new Respuesta();
     $respuesta1->respuesta = 'Si, claro';
     $respuesta1->ponderacion = 40;
 
@@ -122,8 +119,38 @@
         array($respuesta1, $respuesta2, $respuesta3, $respuesta4),
         array($respuesta5, $respuesta6, $respuesta7, $respuesta8)
     );
+    */
+    
+    static function obtenerArrayRespuestas(){
+        $idPregunta = $_SESSION["Contador"];
+        $sql = mysqli_query($conexion, "CALL listar_Respuestas ($idPregunta)") or die("Query fail: " . mysqli_error($conexion));
+        $Resultado = $conexion->prepare($sql);
+        $Resultado->fetch_array(MYSQLI_ASSOC);
+        public $opcion;
+        public $respuesta;
+        public $ponderacion;
+        $Resultado->execute();
+        $Contador = 0;    
+        if ($Resultado->rowCount() > 0) {
+            while($row = $Resultado->fetch()) { //en row va a estar un array con los registros
+                $Objeto->opcion = $row[1];
+                $Objeto->respuesta = $row[2];
+                $Objeto->ponderacion = $row[3];
 
-    /*$Preguntas = array("hotel?","Trivago");*/
+                $ArrayADevolver[$Contador] =  $Objeto;
+                $Contador++;
+            }
+        }
+        
+        $conexion = null;
+    
+        return $ArrayADevolver;    
+    }
+
+
+
+
+
     ?>
     <div class="container-fluid">
         <div class="ContenedorPregunta">
