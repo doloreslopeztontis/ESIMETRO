@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,26 +10,28 @@
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="mainajax.js"></script>
 
     <title>Pregunta</title>
 </head>
-<body>
-    <?php
-    
-    //TODAVIA NO ME PASARON QUE CATEGORIA ES SELECCIONADA
 
+
+<body>
+
+    <?php    
+    //TODAVIA NO ME PASARON QUE CATEGORIA ES SELECCIONADA
     include("Baner.php");
 
     session_start();
     if (!isset($_SESSION['Contador'])){ //si la variable Contador no esta seteada que la incialice en 0
-        $_SESSION['Contador'] = 0;
-        
+        $_SESSION['Contador'] = 0;        
     }
 
+    //clases
     class Respuesta{
-        //El idPregunta no lo agrego porque es la posición del primer array
+        //El idPregunta no lo agrego porque es la posición del primer array + 1
         public $opcion;
         public $respuesta;
         public $ponderacion;
@@ -40,43 +43,20 @@
         public $TextoFinal; 
     };
 
-    class Categoria
-    {
+    class Categoria{
         public $idCategoria;
         public $NombreCategoria;
     };
     
+
     //la linea de abajo la comente porque no entiendo para que servia
     //array[Preguntas] = new array ArrayADevolver; 
-        $servidor = "localhost";
-        $nombreusuario = "root";
-        $password = "";
-        $conexion = new mysqli($servidor,$nombreusuario,$password);
+    $servidor = "localhost";
+    $nombreusuario = "root";
+    $password = "";
+    $conexion = new mysqli($servidor,$nombreusuario,$password);
 
-    static function ObtenerArrayPreguntas(){
-        $sql = mysqli_query($conexion, "CALL listar_Preguntas ($idCategoria)") or die("Query fail: " . mysqli_error($conexion));
-        //yo en este caso usaria la palabra query en vez de prepare, pero no entiendo la diferencia
-        $Resultado = $conexion->prepare($sql);
-        $Resultado->fetch_array(MYSQLI_ASSOC);
-    
-        $Resultado->execute();
-        $Contador = 0;    
-        if ($Resultado->rowCount() > 0) {
-            while($row = $Resultado->fetch()) { //en row va a estar un array con los registros
-                $Objeto->Categoria = $row[1];
-                $Objeto->Pregunta = $row[2];
-                $Objeto->TextoFinal = $row[3];
-
-                $ArrayADevolver[$Contador] =  $Objeto;
-                $Contador++;
-            }
-        }
-        
-        $conexion = null;
-    
-        return $ArrayADevolver;    
-    }
-
+    verifconexion($conexion);
     $ArrayPreguntas = ObtenerArrayPreguntas();
     $Respuestas = obtenerArrayRespuestas();
     
@@ -120,7 +100,37 @@
         array($respuesta5, $respuesta6, $respuesta7, $respuesta8)
     );
     */
+
+
+    function verifconexion($conexion){
+        if ($conexion -> connect_error ){
+            die("conexion fallida: ". $conexion -> connect_error);
+        }   
+    }
+
+    static function ObtenerArrayPreguntas(){
+        $sql = mysqli_query($conexion, "CALL listar_Preguntas ($idCategoria)") or die("Query fail: " . mysqli_error($conexion));
+        //yo en este caso usaria la palabra query en vez de prepare, pero no entiendo la diferencia
+        $Resultado = $conexion->prepare($sql);
+        $Resultado->fetch_array(MYSQLI_ASSOC);
     
+        $Resultado->execute();
+        $Contador = 0;    
+        if ($Resultado->rowCount() > 0) {
+            while($row = $Resultado->fetch()) { //en row va a estar un array con los registros
+                $Objeto->Categoria = $row[1];
+                $Objeto->Pregunta = $row[2];
+                $Objeto->TextoFinal = $row[3];
+
+                $ArrayADevolver[$Contador] =  $Objeto;
+                $Contador++;
+            }
+        }
+        
+        $conexion = null;
+    
+        return $ArrayADevolver;    
+    }
     static function obtenerArrayRespuestas(){
         $idPregunta = $_SESSION["Contador"];
         $sql = mysqli_query($conexion, "CALL listar_Respuestas ($idPregunta)") or die("Query fail: " . mysqli_error($conexion));
@@ -147,11 +157,10 @@
         return $ArrayADevolver;    
     }
 
-
-
-
-
     ?>
+
+
+    <!--html-->
     <div class="container-fluid">
         <div class="ContenedorPregunta">
             <div class="row col-md-12 justify-content-center FondoBlanco">
@@ -160,7 +169,7 @@
             <div class="row col-md-12 FondoBlanco">
             <?php $index = 0; 
             foreach($Respuestas as $respuesta){ ?> 
-                    <button id="respuesta-link"></button><p class="btn btn-outline-secondary Respuesta Res"><?php echo $Respuestas[$_SESSION['Contador']][$index]->respuesta; ?></p>
+                    <button id="pregunta-link"></button><p class="btn btn-outline-secondary Respuesta Res"><?php echo $Respuestas[$_SESSION['Contador']][$index]->respuesta; ?></p>
                     <?php
                     $index++;
                     } ?>

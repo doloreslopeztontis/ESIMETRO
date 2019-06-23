@@ -10,6 +10,9 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="mainajax.js"></script>
+
     <title>Bienvenido/a</title>
 </head>
 <body>
@@ -31,9 +34,6 @@
             </button>   
         </div>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="mainajax.js"></script>
 
 </body>
 </html>

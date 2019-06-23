@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,13 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="mainajax.js"></script>
+
     <title>Elegir Ciclo</title>
 </head>
+
+
 <body>
 
     <?php
@@ -24,35 +30,29 @@
     $nombreusuario = "root";
     $password = "";
     $conexion = new mysqli($servidor,$nombreusuario,$password);
-    $_SESSION["idUsuario"];
-    //esta es la linea que agrega uno al idUsuario pero no se donde es que se hace click para elegir una categoria
-    //$_SESSION["idUsuario"] = $ultimaestadistica + 1;
 
     verifconexion($conexion);
-    traerUltimaEstadistica($conexion);
     traerCategorias($conexion);    
 
+    //funciones
     function verifconexion($conexion){
         if ($conexion -> connect_error ){
             die("conexion fallida: ". $conexion -> connect_error);
         }   
     }
 
-	function obtenerCategorias($conexion){
+	function traerCategorias($conexion){
 		//esta linea obtiene las categorias y las guarda en $categoriasResultado
-		$sql = mysqli_query($conexion, "CALL listar_Categorias") or die("Query fail: " . mysqli_error($conexion));
+		$sql = mysqli_query($conexion, "CALL listar_Categorias()") or die("Query fail: " . mysqli_error($conexion));
 		$categoriasResultado = $conexion -> query ($sql);
         //acá se esta guardando en una variable lo que trajo la query ($categoriasResultado). hay diferentes tipos de arrays, pero yo asumi que era uno asociativo
 		$categorias = $categoriasResultado -> fetch_array(MYSQLI_ASSOC);	
     }	
     
-    function traerUltimaEstadistica($conexion){
-        //no estoy segura que el stored procedure se llame asi, pero no lo encontre en la bdd
-        $sql = mysqli_query($conexion, "CALL traerUltimaEstadistica") or die ("Query fail: " . mysqli_error($conexion));
-        $ultimaestadistica = $conexion -> query($sql);
-    }
-
     ?>
+   
+
+   <!--html-->
    <div class="container-fluid">
         <div class="ContenedorPregunta">
             <div class="row col-md-12 justify-content-center FondoBlanco">
@@ -66,9 +66,7 @@
                
         </div>
    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="mainajax.js"></script>
+    
 </body>
 
 </html>
