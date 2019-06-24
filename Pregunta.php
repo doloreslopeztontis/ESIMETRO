@@ -23,6 +23,7 @@
     <?php    
     //TODAVIA NO ME PASARON QUE CATEGORIA ES SELECCIONADA
     include("Baner.php");
+    //include("conexion.php");
 
     session_start();
     if (!isset($_SESSION['Contador'])){ //si la variable Contador no esta seteada que la incialice en 0
@@ -51,14 +52,9 @@
 
     //la linea de abajo la comente porque no entiendo para que servia
     //array[Preguntas] = new array ArrayADevolver; 
-    $servidor = "localhost";
-    $nombreusuario = "root";
-    $password = "";
-    $conexion = new mysqli($servidor,$nombreusuario,$password);
-
-    verifconexion($conexion);
+    
     $ArrayPreguntas = ObtenerArrayPreguntas();
-    $Respuestas = obtenerArrayRespuestas();
+    $ArrayRespuestas = obtenerArrayRespuestas();
     
     //HARCODEO EL ARRAY
     /*$respuesta1 = new Respuesta();
@@ -102,22 +98,17 @@
     */
 
 
-    function verifconexion($conexion){
-        if ($conexion -> connect_error ){
-            die("conexion fallida: ". $conexion -> connect_error);
-        }   
-    }
-
-    static function ObtenerArrayPreguntas(){
+    function ObtenerArrayPreguntas(){
+        include("conexion.php");
+        $idCategoria=6;
         $sql = mysqli_query($conexion, "CALL listar_Preguntas ($idCategoria)") or die("Query fail: " . mysqli_error($conexion));
         //yo en este caso usaria la palabra query en vez de prepare, pero no entiendo la diferencia
-        $Resultado = $conexion->prepare($sql);
-        $Resultado->fetch_array(MYSQLI_ASSOC);
-    
-        $Resultado->execute();
+        //$Resultado = $conexion->prepare($sql);
+        
         $Contador = 0;    
-        if ($Resultado->rowCount() > 0) {
-            while($row = $Resultado->fetch()) { //en row va a estar un array con los registros
+        $Objeto = new Preguntas();
+            while ($row = mysqli_fetch_array($sql)){  
+        
                 $Objeto->Categoria = $row[1];
                 $Objeto->Pregunta = $row[2];
                 $Objeto->TextoFinal = $row[3];
@@ -125,24 +116,22 @@
                 $ArrayADevolver[$Contador] =  $Objeto;
                 $Contador++;
             }
-        }
         
-        $conexion = null;
+        mysqli_close($conexion);
     
         return $ArrayADevolver;    
     }
-    static function obtenerArrayRespuestas(){
+
+    function obtenerArrayRespuestas(){
+        include("conexion.php");
         $idPregunta = $_SESSION["Contador"];
         $sql = mysqli_query($conexion, "CALL listar_Respuestas ($idPregunta)") or die("Query fail: " . mysqli_error($conexion));
-        $Resultado = $conexion->prepare($sql);
-        $Resultado->fetch_array(MYSQLI_ASSOC);
-        public $opcion;
-        public $respuesta;
-        public $ponderacion;
-        $Resultado->execute();
+        $opcion;
+        $respuesta;
+        $ponderacion;
         $Contador = 0;    
-        if ($Resultado->rowCount() > 0) {
-            while($row = $Resultado->fetch()) { //en row va a estar un array con los registros
+        $Objeto = new Respuesta();
+        while ($row = mysqli_fetch_array($sql)){  
                 $Objeto->opcion = $row[1];
                 $Objeto->respuesta = $row[2];
                 $Objeto->ponderacion = $row[3];
@@ -150,9 +139,8 @@
                 $ArrayADevolver[$Contador] =  $Objeto;
                 $Contador++;
             }
-        }
         
-        $conexion = null;
+        mysqli_close($conexion);
     
         return $ArrayADevolver;    
     }
@@ -164,11 +152,11 @@
     <div class="container-fluid">
         <div class="ContenedorPregunta">
             <div class="row col-md-12 justify-content-center FondoBlanco">
-                <p class="Pregunta center"><?php echo $ArrayPreguntas[$_SESSION['Contador']]?></p>
+                <p class="Pregunta center"><?php echo $ArrayPreguntas[$_SESSION['Contador']]->Pregunta; ?></p>
             </div>
             <div class="row col-md-12 FondoBlanco">
             <?php $index = 0; 
-            foreach($Respuestas as $respuesta){ ?> 
+            foreach($ArrayRespuestas as $respuesta){ ?> 
                     <button id="pregunta-link"></button><p class="btn btn-outline-secondary Respuesta Res"><?php echo $Respuestas[$_SESSION['Contador']][$index]->respuesta; ?></p>
                     <?php
                     $index++;
