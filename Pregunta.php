@@ -93,8 +93,9 @@
         $respuesta;
         $ponderacion;
         $Contador = 0;    
-        $Objeto = new Respuesta();
+        
         while ($row = mysqli_fetch_array($sql)){  
+                $Objeto = new Respuesta();
                 $Objeto->opcion = $row[1];
                 $Objeto->respuesta = $row[2];
                 $Objeto->ponderacion = $row[3];
@@ -120,7 +121,7 @@
             <div class="row col-md-12 FondoBlanco">
             <?php $index = 0; 
             foreach($ArrayRespuestas as $respuesta){ ?> 
-                    <button id="pregunta-link"></button><p class="btn btn-outline-secondary Respuesta Res"><?php echo $ArrayPreguntas[$_SESSION['Contador']]->ArrayRespuestas[$index]->respuesta; ?></p>
+                    <button id="pregunta-link" class="btn btn-outline-secondary Respuesta Res"><?php echo $ArrayPreguntas[$_SESSION['Contador']]->arrayRespuestas[$index]->respuesta; ?></button>
                     <?php
                     $index++;
                     } ?>
