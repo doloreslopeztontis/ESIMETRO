@@ -38,10 +38,11 @@
         public $ponderacion;
     };
 
-    class Preguntas{
+    class Pregunta{
         public $Categoria;
         public $Pregunta;
         public $TextoFinal; 
+        public $arrayRespuestas;
     };
 
     class Categoria{
@@ -55,48 +56,10 @@
     
     $ArrayPreguntas = ObtenerArrayPreguntas();
     $ArrayRespuestas = obtenerArrayRespuestas();
-    
-    //HARCODEO EL ARRAY
-    /*$respuesta1 = new Respuesta();
-    $respuesta1->respuesta = 'Si, claro';
-    $respuesta1->ponderacion = 40;
-
-    $respuesta2 = new Respuesta();
-    $respuesta2->respuesta = 'No, de ninguna forma';
-    $respuesta2->ponderacion = 20;
-
-    $respuesta3 = new Respuesta();
-    $respuesta3->respuesta = 'Puede que si';
-    $respuesta3->ponderacion = 30;
-
-    $respuesta4 = new Respuesta();
-    $respuesta4->respuesta = 'Tal vez';
-    $respuesta4->ponderacion = 10;
-
-    $respuesta5 = new Respuesta();
-    $respuesta5->respuesta = 'aaaa';
-    $respuesta5->ponderacion = 40;
-
-    $respuesta6 = new Respuesta();
-    $respuesta6->respuesta = 'bbbb';
-    $respuesta6->ponderacion = 20;
-
-    $respuesta7 = new Respuesta();
-    $respuesta7->respuesta = 'ccccc';
-    $respuesta7->ponderacion = 30;
-
-    $respuesta8 = new Respuesta();
-    $respuesta8->respuesta = 'dddddd';
-    $respuesta8->ponderacion = 10;
-
-    $Respuestas = array
-    (   
-        //esto lo tiene que traer de la bd dinamicamente
-        array($respuesta1, $respuesta2, $respuesta3, $respuesta4),
-        array($respuesta5, $respuesta6, $respuesta7, $respuesta8)
-    );
-    */
-
+    foreach($ArrayPreguntas as $pregunta)
+    {
+        $pregunta->arrayRespuestas = $ArrayRespuestas;
+    }
 
     function ObtenerArrayPreguntas(){
         include("conexion.php");
@@ -106,7 +69,7 @@
         //$Resultado = $conexion->prepare($sql);
         
         $Contador = 0;    
-        $Objeto = new Preguntas();
+        $Objeto = new Pregunta();
             while ($row = mysqli_fetch_array($sql)){  
         
                 $Objeto->Categoria = $row[1];
@@ -157,7 +120,7 @@
             <div class="row col-md-12 FondoBlanco">
             <?php $index = 0; 
             foreach($ArrayRespuestas as $respuesta){ ?> 
-                    <button id="pregunta-link"></button><p class="btn btn-outline-secondary Respuesta Res"><?php echo $Respuestas[$_SESSION['Contador']][$index]->respuesta; ?></p>
+                    <button id="pregunta-link"></button><p class="btn btn-outline-secondary Respuesta Res"><?php echo $ArrayPreguntas[$_SESSION['Contador']]->ArrayRespuestas[$index]->respuesta; ?></p>
                     <?php
                     $index++;
                     } ?>
