@@ -25,6 +25,7 @@
     include("Baner.php");
     //include("conexion.php");
 
+
     session_start();
     if (!isset($_SESSION['Contador'])){ //si la variable Contador no esta seteada que la incialice en 0
         $_SESSION['Contador'] = 0;        
@@ -60,7 +61,7 @@
     {
         $pregunta->arrayRespuestas = $ArrayRespuestas;
     }
-
+    //$_SESSION["textoFinal"]= $ArrayPreguntas[$_SESSION["Contador"]]->TextoFinal;
     function ObtenerArrayPreguntas(){
         include("conexion.php");
         $idCategoria=6;
