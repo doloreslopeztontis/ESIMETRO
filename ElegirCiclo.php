@@ -31,6 +31,13 @@
     include("conexion.php");
 
     session_start();
+    if(isset($_SESSION["Contador"]))
+    {
+        session_unset();
+        session_destroy();    
+    }
+    
+    
     //$Array = array("CICLO SUPERIOR","CICLO BASICO","PADRE","HOLA","HOLA","HOLA");
     //este array lo tiene que traer de la bd dinamicamente y estar lleno de objetos Categoria !!! 
     

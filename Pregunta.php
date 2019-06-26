@@ -61,7 +61,7 @@
     {
         $pregunta->arrayRespuestas = $ArrayRespuestas;
     }
-    //$_SESSION["textoFinal"]= $ArrayPreguntas[$_SESSION["Contador"]]->TextoFinal;
+    $_SESSION["textoFinal"]= $ArrayPreguntas[$_SESSION["Contador"]]->TextoFinal;
     function ObtenerArrayPreguntas(){
         include("conexion.php");
         $idCategoria=6;
@@ -70,17 +70,14 @@
         //$Resultado = $conexion->prepare($sql);
         
         $Contador = 0;    
-        $Objeto = new Pregunta();
             while ($row = mysqli_fetch_array($sql)){  
-        
+                $Objeto = new Pregunta();
                 $Objeto->Categoria = $row[1];
                 $Objeto->Pregunta = $row[2];
                 $Objeto->TextoFinal = $row[3];
-
                 $ArrayADevolver[$Contador] =  $Objeto;
                 $Contador++;
             }
-        
         mysqli_close($conexion);
     
         return $ArrayADevolver;    
