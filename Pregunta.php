@@ -65,11 +65,9 @@
     function ObtenerArrayPreguntas(){
         include("conexion.php");
         $idCategoria=6;
-        $sql = mysqli_query($conexion, "CALL listar_Preguntas ($idCategoria)") or die("Query fail: " . mysqli_error($conexion));
-        //yo en este caso usaria la palabra query en vez de prepare, pero no entiendo la diferencia
-        //$Resultado = $conexion->prepare($sql);
-        
+        $sql = mysqli_query($conexion, "CALL listar_Preguntas ($idCategoria)") or die("Query fail: " . mysqli_error($conexion));        
         $Contador = 0;    
+
             while ($row = mysqli_fetch_array($sql)){  
                 $Objeto = new Pregunta();
                 $Objeto->Categoria = $row[1];
@@ -85,7 +83,7 @@
 
     function obtenerArrayRespuestas(){
         include("conexion.php");
-        $idPregunta = $_SESSION["Contador"];
+        $idPregunta = $_SESSION["Contador"]+1;
         $sql = mysqli_query($conexion, "CALL listar_Respuestas ($idPregunta)") or die("Query fail: " . mysqli_error($conexion));
         $opcion;
         $respuesta;
