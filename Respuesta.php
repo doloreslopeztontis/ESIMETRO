@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="row col-md-12 FondoBlanco">
-                <button type="button" class="btn btn-outline-secondary Continuar">CONTINUAR</button>
+                <button id="continuar -link" type="button" class="btn btn-outline-secondary Continuar">CONTINUAR</button>
             </div>
         </div>
     </div>

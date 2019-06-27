@@ -117,7 +117,7 @@
             <div class="row col-md-12 FondoBlanco">
             <?php $index = 0; 
             foreach($ArrayRespuestas as $respuesta){ ?> 
-                    <button id="pregunta-link" class="btn btn-outline-secondary Respuesta Res"><?php echo $ArrayPreguntas[$_SESSION['Contador']]->arrayRespuestas[$index]->respuesta; ?></button>
+                    <button onclick="ClickPregunta()" class="btn btn-outline-secondary Respuesta Res"><?php echo $ArrayPreguntas[$_SESSION['Contador']]->arrayRespuestas[$index]->respuesta; ?></button>
                     <?php
                     $index++;
                     } ?>

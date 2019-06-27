@@ -1,3 +1,22 @@
+function ClickPregunta(){
+    console.log("click!");
+        
+        var request = $.ajax({
+            url: 'insertarEstadistica.php',
+            type: 'get',
+            dataType: 'html'
+        });
+  
+            request.done( function ( data ) {
+                $('#ciclos-link').html( data );
+            });
+            request.fail( function ( jqXHR, textStatus) {
+                console.log( 'Sorry: ' + textStatus );
+            });
+        
+        $("body").load("Respuesta.php");
+}
+
 $(document).ready(function() { 
     console.log( "ready!" );
 
@@ -29,26 +48,13 @@ $(document).ready(function() {
         }
     );
 
-    //click en una pregunta
-    $('#pregunta-link').click(function(){
-        console.log("click!");
-        
-        var request = $.ajax({
-            url: 'insertarEstadistica.php',
-            type: 'get',
-            dataType: 'html'
-        });
-  
-            request.done( function ( data ) {
-                $('#ciclos-link').html( data );
-            });
-            request.fail( function ( jqXHR, textStatus) {
-                console.log( 'Sorry: ' + textStatus );
-            });
-        
-        $("body").load("Respuesta.php");
+    //click en continuar
+    $("#continuar-link").click(function () {
+        console.log( "click!" );
+
+        $("body").load("Pregunta.php");
         }
-    );
+    ); 
 
 });
 
