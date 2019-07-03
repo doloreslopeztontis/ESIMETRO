@@ -7,9 +7,6 @@ body{
 	background-attachment: fixed;
 }
 @media only screen and (max-width: 425px) {
-    .Baner{
-       height: 50px; 
-    }
     .Titulo{
         font-size: 140px;
     }
@@ -20,8 +17,7 @@ body{
     padding-left: 0;
 }
 
-.Baner{
-    height: 180px;
+.Baner{ 
     margin-bottom: 2%;
 }
 
@@ -105,11 +101,15 @@ body{
 
 .Continuar{
     height: 40px;
-    margin-bottom: 2%;
     border-radius: 50px;
     background: #8A338A;
     color: white;
     border: none;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    margin-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .Continuar:hover{

@@ -84,7 +84,7 @@
             </div>
             <div class="row col-md-12 FondoBlanco">
                 <div class="row col-md-12 justify-content-center FondoBlanco ">
-                    <a href="#"><img class="ImgFinal" src="img/recurso1.png" alt="Recurso"></a>
+                    <a href="<?php echo $LugarAEnviar; ?>"><img class="ImgFinal" src="img/recurso1.png" alt="Recurso"></a>
                 </div>
             </div>
         </div>
