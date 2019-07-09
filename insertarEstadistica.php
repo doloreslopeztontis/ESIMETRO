@@ -10,7 +10,7 @@ insertarEstadistica($conexion);
 
 //funciones
 function insertarEstadistica($conexion){
-    $sql = mysqli_query($conexion, "CALL listar_Categorias ($idUsuario, $idPregunta, $idRespuesta)") or die("Query fail: " . mysqli_error($conexion));
+    $sql = mysqli_query($conexion, "CALL insertar_Estadistica ($idUsuario, $idPregunta, $idRespuesta)") or die("Query fail: " . mysqli_error($conexion));
 }
 
 ?>
