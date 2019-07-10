@@ -14,59 +14,58 @@
 <body>
     <?php include("Baner.php"); 
         $NumRandom = rand (0 ,2 );
-        echo $NumRandom;
 
     if($Ponderacion<=30){
         switch ($NumRandom) {
             case '0':
-                $ImagenAMostrar = //Ubicacion del archivo ;
-                $LugarAEnviar = //url del lugar donde se redirigira al usuario
+                $ImagenAMostrar = "img/recurso1.png"; //Ubicacion del archivo 
+                $LugarAEnviar = "https://es-la.facebook.com/";//url del lugar donde se redirigira al usuario
                 break;
             
             case '1':
-                $ImagenAMostrar = //Ubicacion del archivo ;
-                $LugarAEnviar = //url del lugar donde se redirigira al usuario
+                $ImagenAMostrar = "img/recurso1.png";//Ubicacion del archivo ;
+                $LugarAEnviar = "https://es-la.facebook.com/";//url del lugar donde se redirigira al usuario
                 break;
 
             case '2':
-                $ImagenAMostrar = //Ubicacion del archivo ;
-                $LugarAEnviar = //url del lugar donde se redirigira al usuario
+                $ImagenAMostrar = "img/recurso1.png"; //Ubicacion del archivo ;
+                $LugarAEnviar = "https://es-la.facebook.com/";//url del lugar donde se redirigira al usuario
                 break;
         }
     }
     else if(($Ponderacion>30)&&($Ponderacion<=60)){
         switch ($NumRandom) {
             case '0':
-                $ImagenAMostrar = //Ubicacion del archivo ;
-                $LugarAEnviar = //url del lugar donde se redirigira al usuario
+                $ImagenAMostrar = "img/recurso1.png" ;//Ubicacion del archivo ;
+                $LugarAEnviar = "https://es-la.facebook.com/";//url del lugar donde se redirigira al usuario
                 break;
             
             case '1':
-                $ImagenAMostrar = //Ubicacion del archivo ;
-                $LugarAEnviar = //url del lugar donde se redirigira al usuario
+                $ImagenAMostrar = "img/recurso1.png" ; //Ubicacion del archivo ;
+                $LugarAEnviar = "https://es-la.facebook.com/";//url del lugar donde se redirigira al usuario
                 break;
 
             case '2':
-                $ImagenAMostrar = //Ubicacion del archivo ;
-                $LugarAEnviar = //url del lugar donde se redirigira al usuario
+                $ImagenAMostrar = "img/recurso1.png";//Ubicacion del archivo ;
+                $LugarAEnviar = "https://es-la.facebook.com/";//url del lugar donde se redirigira al usuario
                 break;
         }
     }
     else{
         switch ($NumRandom) {
             case '0':
-                $ImagenAMostrar = //Ubicacion del archivo ;
-                $LugarAEnviar = //url del lugar donde se redirigira al usuario
+                $ImagenAMostrar = "img/recurso1.png"; //Ubicacion del archivo ;
+                $LugarAEnviar = "https://es-la.facebook.com/";//url del lugar donde se redirigira al usuario
                 break;
             
             case '1':
-                $ImagenAMostrar = //Ubicacion del archivo ;
-                $LugarAEnviar = //url del lugar donde se redirigira al usuario
+                $ImagenAMostrar = "img/recurso1.png"; //Ubicacion del archivo ;
+                $LugarAEnviar = "https://es-la.facebook.com/";//url del lugar donde se redirigira al usuario
                 break;
 
             case '2':
-                $ImagenAMostrar = //Ubicacion del archivo ;
-                $LugarAEnviar = //url del lugar donde se redirigira al usuario
+                $ImagenAMostrar = "img/recurso1.png";//Ubicacion del archivo ;
+                $LugarAEnviar = "https://es-la.facebook.com/";//url del lugar donde se redirigira al usuario
                 break;
         }
     }
@@ -84,8 +83,13 @@
             </div>
             <div class="row col-md-12 FondoBlanco">
                 <div class="row col-md-12 justify-content-center FondoBlanco ">
-                    <a href="<?php echo $LugarAEnviar; ?>"><img class="ImgFinal" src="img/recurso1.png" alt="Recurso"></a>
+                    <a href="<?php echo $LugarAEnviar; ?>" target="_Blank"><img class="ImgFinal" src=<?php echo $ImagenAMostrar; ?> alt="Recurso" ></a>
                 </div>
+                
+            </div>
+            <div class="row col-md-12">
+                <a class="col-md-6 col-sm-12" href="<?php echo $LugarAEnviar; ?>" target="_Blank"><button id="continuar -link" type="button" class="btn btn-outline-secondary Continuar BotonFinal">RECURSO</button></a>
+                <a class="col-md-6 col-sm-12" href="https://campus.ort.edu.ar/educacionsexualintegral" target="_Blank"><button id="continuar -link" type="button" class="btn btn-outline-secondary Continuar BotonFinal">HOME ESI</button></a>
             </div>
         </div>
     </div>
