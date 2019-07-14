@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +10,14 @@
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="mainajax.js"></script>
+
     <title>Sabias que...</title>
 </head>
+
+
 <body>
     <?php include("Baner.php");
     include ("conexion.php");
@@ -30,7 +37,7 @@
                 </div>
             </div>
             <div class="row col-md-12 FondoBlanco">
-                <button id="continuar -link" type="button" class="btn btn-outline-secondary Continuar">CONTINUAR</button>
+                <button id="continuar-link" type="button" class="btn btn-outline-secondary Continuar">CONTINUAR</button>
                 <?php //aca deberia incluir en la session el texto de la opcion, pero no se de donde se saca
                    insertarEstadistica($conexion);            ?>
             </div>
