@@ -31,7 +31,7 @@
     include("conexion.php");
     include ("traerUltimaEstadistica.php");
 
-    session_start();
+    //session_start();
     if(isset($_SESSION["Contador"]))
     {
         session_unset();

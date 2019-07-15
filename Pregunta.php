@@ -84,7 +84,7 @@
     function obtenerArrayRespuestas(){
         include("conexion.php");
         $idPregunta = $_SESSION["Contador"]+1;
-        $sql = mysqli_query($conexion, "CALL listar_Respuestas ($idPregunta)") or die("Query fail: " . mysqli_error($conexion));
+        $sql = mysqli_query($conexion, "CALL listar_Respuestas($idPregunta)") or die("Query fail: " . mysqli_error($conexion));
         $opcion;
         $respuesta;
         $ponderacion;
@@ -92,7 +92,7 @@
         
         while ($row = mysqli_fetch_array($sql)){  
                 $Objeto = new Respuesta();
-                $Objeto->opcion = $row[1];
+                $Objeto->opcion = $row[0];
                 $Objeto->respuesta = $row[2];
                 $Objeto->ponderacion = $row[3];
 
@@ -117,10 +117,11 @@
             <div class="row col-md-12 FondoBlanco">
             <?php $index = 0; 
             foreach($ArrayRespuestas as $respuesta){ ?> 
-                    <button onclick="ClickPregunta()" class="btn btn-outline-secondary Respuesta Res"><?php echo $ArrayPreguntas[$_SESSION['Contador']]->arrayRespuestas[$index]->respuesta; ?></button>
+                    <button value="<?php $respuesta->opcion ?>" onclick="ClickPregunta(this)" class="btn btn-outline-secondary Respuesta Res"><?php echo $ArrayPreguntas[$_SESSION['Contador']]->arrayRespuestas[$index]->respuesta; ?></button>
                     <?php
                     $index++;
-                    } ?>
+                    
+            } ?>
             </div>
         </div>
     </div>

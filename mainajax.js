@@ -1,10 +1,13 @@
-function ClickPregunta(){
+function ClickPregunta(elem){
     console.log("click!");
-        
+    console.log(elem.val);
         var request = $.ajax({
             url: 'insertarEstadistica.php',
             type: 'get',
-            dataType: 'html'
+            dataType: 'html',
+            data: {
+                idRespuesta:$(elem).val()
+            }
         });
   
             request.done( function ( data ) {
