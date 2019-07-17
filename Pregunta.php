@@ -115,13 +115,15 @@
                 <p class="Pregunta center"><?php echo $ArrayPreguntas[$_SESSION['Contador']]->Pregunta; ?></p>
             </div>
             <div class="row col-md-12 FondoBlanco">
-            <?php $index = 0; 
+            <?php $index = 0; ?>
+            <form type="POST" action="" id="respuestasForm">
+            <?php
             foreach($ArrayRespuestas as $respuesta){ ?> 
-                    <button value="<?php $respuesta->opcion ?>" onclick="ClickPregunta(this)" class="btn btn-outline-secondary Respuesta Res"><?php echo $ArrayPreguntas[$_SESSION['Contador']]->arrayRespuestas[$index]->respuesta; ?></button>
+                    <input type="submit" name="idRespuesta" value="<?php echo $ArrayPreguntas[$_SESSION['Contador']]->arrayRespuestas[$index]->respuesta; ?>" class="btn btn-outline-secondary Respuesta Res"/>
                     <?php
-                    $index++;
-                    
+                    $index++;                    
             } ?>
+            </form>
             </div>
         </div>
     </div>

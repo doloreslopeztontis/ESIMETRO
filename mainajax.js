@@ -1,24 +1,18 @@
-function ClickPregunta(elem){
+function ClickPregunta(){
     console.log("click!");
-    console.log(elem.val);
         var request = $.ajax({
             url: 'insertarEstadistica.php',
-            type: 'get',
-            dataType: 'html',
-            data: {
-                idRespuesta:$(elem).val()
+            type: 'POST',
+            dataType: 'text',
+            data: ({
+                idRespuesta:"value"
+            }),
+            success: function(data){
+                console.log(request.idRespuesta);
             }
-        });
-  
-            request.done( function ( data ) {
-                $('#ciclos-link').html( data );
-            });
-            request.fail( function ( jqXHR, textStatus) {
-                console.log( 'Sorry: ' + textStatus );
-            });
-        
-        $("body").load("Respuesta.php");
+        });       
 }
+
 
 $(document).ready(function() { 
     console.log( "ready!" );
@@ -36,8 +30,7 @@ $(document).ready(function() {
         
         var request = $.ajax({
             url: 'traerUltimaEstadistica.php',
-            type: 'get',
-            dataType: 'html'
+            type: 'POST'
         });
   
             request.done( function ( data ) {
@@ -54,11 +47,22 @@ $(document).ready(function() {
     //click en continuar
     $("#continuar-link").click(function () {
         console.log( "click!" );
-
         $("body").load("Pregunta.php");
         }
     ); 
 
+    $('#respuestasForm').on('submit', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: 'POST',
+          url: 'insertarEstadistica.php',
+          data: $('#respuestasForm').serialize() ,
+          success: function () {
+            //console.log(data.)
+          }
+        });
+    });
 });
 
 //$( "#main-container" ).load( "Pregunta.php #pregunta-container" );

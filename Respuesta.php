@@ -21,7 +21,6 @@
 <body>
     <?php include("Baner.php");
     include ("conexion.php");
-    include("insertarEstadistica.php");
     session_start();
 
     ?>
@@ -38,8 +37,6 @@
             </div>
             <div class="row col-md-12 FondoBlanco">
                 <button id="continuar-link" type="button" class="btn btn-outline-secondary Continuar">CONTINUAR</button>
-                <?php //aca deberia incluir en la session el texto de la opcion, pero no se de donde se saca
-                   insertarEstadistica($conexion);            ?>
             </div>
         </div>
     </div>

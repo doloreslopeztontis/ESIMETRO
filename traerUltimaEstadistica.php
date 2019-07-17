@@ -5,7 +5,6 @@ include("conexion.php");
 traerUltimaEstadistica($conexion);
 
 session_start();
-$_SESSION["idUsuario"];
 $_SESSION["idUsuario"] = $ultimousuario + 1;
 
 function traerUltimaEstadistica($conexion){
