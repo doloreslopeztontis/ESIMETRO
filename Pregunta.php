@@ -21,14 +21,13 @@
 <body>
 
     <?php    
-    //TODAVIA NO ME PASARON QUE CATEGORIA ES SELECCIONADA
     include("Baner.php");
     //include("conexion.php");
 
 
     session_start();
-    if (!isset($_SESSION['Contador'])){ //si la variable Contador no esta seteada que la incialice en 0
-        $_SESSION['Contador'] = 0;        
+    if (!isset($_SESSION["Contador"])){ //si la variable Contador no esta seteada que la incialice en 0
+        $_SESSION["Contador"] = 0;        
     }
 
     //clases
@@ -112,18 +111,17 @@
     <div class="container-fluid">
         <div class="ContenedorPregunta">
             <div class="row col-md-12 justify-content-center FondoBlanco">
-                <p class="Pregunta center"><?php echo $ArrayPreguntas[$_SESSION['Contador']]->Pregunta; ?></p>
+                <p class="Pregunta center"><?php echo $ArrayPreguntas[$_SESSION["Contador"]]->Pregunta; ?></p>
             </div>
             <div class="row col-md-12 FondoBlanco">
             <?php $index = 0; ?>
-            <form type="POST" action="" id="respuestasForm">
             <?php
             foreach($ArrayRespuestas as $respuesta){ ?> 
-                    <input type="submit" name="idRespuesta" value="<?php echo $ArrayPreguntas[$_SESSION['Contador']]->arrayRespuestas[$index]->respuesta; ?>" class="btn btn-outline-secondary Respuesta Res"/>
+                    <button value=<?php echo $respuesta->opcion; ?> onclick="ClickPregunta(this)" class="btn btn-outline-secondary Respuesta Res"> <?php echo $respuesta->respuesta; ?> </button>
                     <?php
-                    $index++;                    
+                    $index++;
+                    echo $_SESSION["idUsuario"];
             } ?>
-            </form>
             </div>
         </div>
     </div>

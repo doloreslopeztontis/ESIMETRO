@@ -32,7 +32,7 @@
             </div>
             <div class="row col-md-12 FondoBlanco">
                 <div class="row col-md-12 justify-content-center FondoBlanco">
-                    <p class="TextoDato center"><?php echo $_SESSION['textoFinal']; ?></p>
+                    <p class="TextoDato center"><?php echo $_SESSION["textoFinal"]; ?></p>
                 </div>
             </div>
             <div class="row col-md-12 FondoBlanco">
@@ -42,7 +42,7 @@
     </div>
 
     <?php 
-        $_SESSION['Contador'] = $_SESSION['Contador'] + 1;
+        $_SESSION["Contador"] = $_SESSION["Contador"] + 1;
     ?>
 
 </body>

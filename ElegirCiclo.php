@@ -29,23 +29,19 @@
     <?php
     
     include("conexion.php");
-    include ("traerUltimaEstadistica.php");
 
-    //session_start();
-    if(isset($_SESSION["Contador"]))
-    {
-        session_unset();
-        session_destroy();    
-    }
+    session_start();
+    session_unset();
+
     
-    
-    //$Array = array("CICLO SUPERIOR","CICLO BASICO","PADRE","HOLA","HOLA","HOLA");
-    //este array lo tiene que traer de la bd dinamicamente y estar lleno de objetos Categoria !!! 
-    
-    traerCategorias($conexion);   
-    //esta es la funcion que trae el usuario, le suma uno y lo mete en el session; pero no se bien donde ponerla adentro del codigo 
-    function aumentarUsuario($conexion){
-    }
+    //no estoy segura que el stored procedure se llame asi, pero no lo encontre en la bdd
+    $sql = mysqli_query($conexion, "CALL traer_UltimaEstadistica(@ultimaestadistica)") or die ("Query fail: " . mysqli_error($conexion));
+    $resultado = mysqli_query($conexion, "select @ultimaestadistica") or die ("Query fail: " . mysqli_error($conexion));
+    $row = mysqli_fetch_array($resultado);
+    $ultimousuario = $row[0];
+    $_SESSION["idUsuario"] = $ultimousuario + 1;
+
+    traerCategorias($conexion);       
 
 	function traerCategorias($conexion){
 		//esta linea obtiene las categorias y las guarda en $categoriasResultado
@@ -54,7 +50,6 @@
         //acá se esta guardando en una variable lo que trajo la query ($categoriasResultado). hay diferentes tipos de arrays, pero yo asumi que era uno asociativo
 		//$categorias = $sql -> fetch_array(MYSQLI_ASSOC);
          while ($categorias = mysqli_fetch_array($sql)){   
-        aumentarUsuario($conexion);
     
     ?>
     <div class="row col-md-12 FondoBlanco">
