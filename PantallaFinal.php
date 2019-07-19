@@ -15,6 +15,9 @@
     <?php include("Baner.php"); 
         $NumRandom = rand (0 ,2 );
 
+        session_start();
+        $Ponderacion = $_SESSION["Ponderacion"];
+        echo $Ponderacion;
     if($Ponderacion<=30){
         switch ($NumRandom) {
             case '0':

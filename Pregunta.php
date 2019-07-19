@@ -50,11 +50,12 @@
         public $NombreCategoria;
     };
     
-
-    //la linea de abajo la comente porque no entiendo para que servia
-    //array[Preguntas] = new array ArrayADevolver; 
-    
+ 
     $ArrayPreguntas = ObtenerArrayPreguntas();
+    if($_SESSION["Contador"] == sizeof($ArrayPreguntas))
+    {
+        ?> <script>TerminarJuego();</script> <?php
+    }
     $ArrayRespuestas = obtenerArrayRespuestas();
     foreach($ArrayPreguntas as $pregunta)
     {
@@ -120,7 +121,6 @@
                     <button value=<?php echo $respuesta->opcion; ?> onclick="ClickPregunta(this)" class="btn btn-outline-secondary Respuesta Res"> <?php echo $respuesta->respuesta; ?> </button>
                     <?php
                     $index++;
-                    echo $_SESSION["idUsuario"];
             } ?>
             </div>
         </div>

@@ -33,8 +33,6 @@
     session_start();
     session_unset();
 
-    
-    //no estoy segura que el stored procedure se llame asi, pero no lo encontre en la bdd
     $sql = mysqli_query($conexion, "CALL traer_UltimaEstadistica(@ultimaestadistica)") or die ("Query fail: " . mysqli_error($conexion));
     $resultado = mysqli_query($conexion, "select @ultimaestadistica") or die ("Query fail: " . mysqli_error($conexion));
     $row = mysqli_fetch_array($resultado);

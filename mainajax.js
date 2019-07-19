@@ -1,6 +1,5 @@
 function ClickPregunta(elem){
     console.log("click!");
-    console.log(elem.value);
         var request = $.ajax({
             url: 'insertarEstadistica.php',
             type: 'POST',
@@ -15,6 +14,10 @@ function ClickPregunta(elem){
         });       
 }
 
+function TerminarJuego(){
+    console.log("fin!!!");
+    $("body").load("PantallaFinal.php");
+}
 
 
 $(document).ready(function() { 
