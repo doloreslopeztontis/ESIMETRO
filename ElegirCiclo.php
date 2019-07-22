@@ -38,6 +38,7 @@
     $row = mysqli_fetch_array($resultado);
     $ultimousuario = $row[0];
     $_SESSION["idUsuario"] = $ultimousuario + 1;
+	$_SESSION["Ponderacion"]=0;
 
     traerCategorias($conexion);       
 

@@ -17,7 +17,7 @@
 
         session_start();
         $Ponderacion = $_SESSION["Ponderacion"];
-        echo $Ponderacion;
+        
     if($Ponderacion<=30){
         switch ($NumRandom) {
             case '0':
@@ -91,8 +91,8 @@
                 
             </div>
             <div class="row col-md-12">
-                <a class="col-md-6 col-sm-12" href="<?php echo $LugarAEnviar; ?>" target="_Blank"><button id="continuar -link" type="button" class="btn btn-outline-secondary Continuar BotonFinal">RECURSO</button></a>
-                <a class="col-md-6 col-sm-12" href="https://campus.ort.edu.ar/educacionsexualintegral" target="_Blank"><button id="continuar -link" type="button" class="btn btn-outline-secondary Continuar BotonFinal">HOME ESI</button></a>
+                <a class="col-md-6 col-sm-12" href="<?php echo $LugarAEnviar; ?>" target="_Blank"><button id="continuar -link" type="button" class="btn btn-outline-secondary Continuar BotonFinal">VER RECURSO</button></a>
+                <a class="col-md-6 col-sm-12" href="https://campus.ort.edu.ar/educacionsexualintegral" target="_Blank"><button id="continuar -link" type="button" class="btn btn-outline-secondary Continuar BotonFinal">VISITAR HOME ESI</button></a>
             </div>
         </div>
     </div>
